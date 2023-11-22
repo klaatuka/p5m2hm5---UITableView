@@ -31,7 +31,6 @@ class ViewController: UIViewController {
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
-    
 }
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,20 +57,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             cell.imageView?.layer.cornerRadius = 10
             cell.imageView?.image = UIImage(named: "\(images[indexPath.row])")
             cell.textLabel?.text = "\(item[indexPath.row])"
-            //констрейнты для фото и для текста
+            //констрейнты для фото
             if let imageView = cell.imageView, let textLabel = cell.textLabel {
                 imageView.translatesAutoresizingMaskIntoConstraints = false
                 imageView.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 7).isActive = true
                 imageView.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 12).isActive = true
                 imageView.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -7).isActive = true
                 imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
-                
+                //констрейнты для текста
                 textLabel.translatesAutoresizingMaskIntoConstraints = false
                 textLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 13).isActive = true
                 textLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
             }
         case 1:
-            cell.imageView?.layer.cornerRadius = 45
+            cell.imageView?.layer.cornerRadius = 45 // тут у меня не получается формулой высчитывать
             cell.imageView?.image = UIImage(named: "\(images[indexPath.row])")
             cell.textLabel?.text = "\(item2[indexPath.row])"
             
@@ -90,7 +89,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 imageView.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 11).isActive = true
                 imageView.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -11).isActive = true
                 imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
-                
+                //констрейнты для текста
                 textLabel.translatesAutoresizingMaskIntoConstraints = false
                 textLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16).isActive = true
                 textLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true
@@ -100,7 +99,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
     }
-    
     //регулирует высоту ячеек как всей секции, так и конкретной ячейки
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 1{
